@@ -23,7 +23,8 @@ local plugins = {
   {
     "mfussenegger/nvim-dap",
     config = function()
-      require "custom.configs.dap"
+      -- fix lsp warning by using `dap-cfg` instead of `dap`
+      require "custom.configs.dap-cfg"
       require("core.utils").load_mappings("dap")
     end
   },
