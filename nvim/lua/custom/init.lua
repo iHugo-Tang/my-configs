@@ -17,5 +17,13 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 --vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zR", })
 
+-- markdown options
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
+
 -- im-select
 require("custom/im-select")
