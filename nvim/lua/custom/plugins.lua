@@ -149,6 +149,21 @@ local plugins = {
       },
     },
   },
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup(
+        require("chatgpt").options
+      )
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  },
   -- override
   {
     "hrsh7th/nvim-cmp",
