@@ -153,7 +153,7 @@ local plugins = {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
-      local opts = require("chatgpt").options
+      local opts = require("custom.configs.chatgpt-cfg").options
       require("chatgpt").setup(opts)
     end,
     dependencies = {
@@ -162,6 +162,16 @@ local plugins = {
       "folke/trouble.nvim",
       "nvim-telescope/telescope.nvim"
     }
+  },
+  -- ufo: code folding
+  {
+    'kevinhwang91/nvim-ufo',
+    event = "VeryLazy",
+    dependencies = 'kevinhwang91/promise-async',
+    config = function()
+      local ufo = require("custom.configs.ufo-cfg")
+      require('ufo').setup(ufo.options)
+    end,
   },
   -- override
   {

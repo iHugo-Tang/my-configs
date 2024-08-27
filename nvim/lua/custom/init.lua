@@ -12,11 +12,6 @@ keymap("n", "<S-Down>", ":resize -2<CR>", opts)
 keymap("n", "<S-Left>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-Right>", ":vertical resize -2<CR>", opts)
 
--- opts
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
---vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zR", })
-
 -- markdown options
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
