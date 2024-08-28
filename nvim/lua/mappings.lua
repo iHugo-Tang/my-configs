@@ -40,8 +40,14 @@ map("n", "<leader>x", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "Close buffer" })
 
-map("n", "<leader>xo", function()
-  require("nvchad.tabufline").closeOtherBufs()
+map("n", "<leader>bo", function()
+  local bufs=vim.api.nvim_list_bufs()
+  local current_buf=vim.api.nvim_get_current_buf()
+  for _,i in ipairs(bufs) do
+    if i~=current_buf then
+      vim.api.nvim_buf_delete(i,{})
+    end
+  end
 end, { desc = "Close other buffers" })
 
 -- Quickfix management
