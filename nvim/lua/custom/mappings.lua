@@ -43,6 +43,13 @@ M.general = {
 
     -- buffer
     -- close buffer + hide terminal buffer
+    ["<leader>x"] = {
+      function()
+        require("nvchad.tabufline").close_buffer()
+      end,
+      "Close buffer",
+    },
+    -- close buffer + hide terminal buffer
     ["<leader>xo"] = {
       function()
         require("nvchad.tabufline").closeOtherBufs()
