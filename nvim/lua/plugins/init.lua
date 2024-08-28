@@ -164,7 +164,11 @@ return {
       require('ufo').setup(ufo.options)
     end,
   },
-
+  {
+    'stevearc/dressing.nvim',
+    event = "VeryLazy",
+    opts = {},
+  },
   -- overrides
   {
     "folke/which-key.nvim",
