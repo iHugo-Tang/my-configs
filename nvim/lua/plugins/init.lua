@@ -90,8 +90,9 @@ return {
       "ibhagwan/fzf-lua",              -- optional
     },
     config = function ()
-      -- dofile(vim.g.base46_cache .. "neogit")
       require('neogit').setup {}
+      dofile(vim.g.base46_cache .. "git")
+      dofile(vim.g.base46_cache .. "neogit")
     end
   },
   {
