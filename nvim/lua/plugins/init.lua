@@ -92,7 +92,7 @@ return {
     config = function ()
       require('neogit').setup {}
       dofile(vim.g.base46_cache .. "git")
-      dofile(vim.g.base46_cache .. "neogit")
+      -- dofile(vim.g.base46_cache .. "neogit")
     end
   },
   {
