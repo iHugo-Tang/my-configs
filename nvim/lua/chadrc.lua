@@ -11,6 +11,9 @@ M.base46 = {
 	-- 	Comment = { italic = true },
 	-- 	["@comment"] = { italic = true },
 	-- },
+  hl_override = {
+    MyHighlightGroup = require("configs.neogit-hl").make_palette(),
+  },
 }
 
 return M
