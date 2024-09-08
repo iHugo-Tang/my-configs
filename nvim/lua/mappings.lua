@@ -4,6 +4,7 @@ local utils = require("utils")
 -- add yours here
 
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 local api = vim.api
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -37,6 +38,7 @@ map("n", "<S-Left>", ":vertical resize -2<CR>")
 map("n", "<S-Right>", ":vertical resize +2<CR>")
 
 -- Buffer management
+unmap("n", "<leader>b")
 map("n", "<leader>bo", function()
   local bufs = api.nvim_list_bufs()
   local current_buf = api.nvim_get_current_buf()
