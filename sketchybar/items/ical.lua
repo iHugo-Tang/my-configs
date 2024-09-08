@@ -60,7 +60,7 @@ local ical = sbar.add("item", "ical", {
     font = "sketchybar-app-font:Regular:16.0",
   },
   label = { font = { family = settings.font.numbers } },
-  update_freq = 60,
+  update_freq = 10,
 })
 
 sbar.add("bracket", "ical.bracket", { ical.name }, {
