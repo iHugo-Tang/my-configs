@@ -4,6 +4,7 @@ local utils = require("utils")
 -- add yours here
 
 local map = vim.keymap.set
+local api = vim.api
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
@@ -37,15 +38,18 @@ map("n", "<S-Right>", ":vertical resize +2<CR>")
 
 -- Buffer management
 map("n", "<leader>bo", function()
-  local bufs=vim.api.nvim_list_bufs()
-  local current_buf=vim.api.nvim_get_current_buf()
+  local bufs = api.nvim_list_bufs()
+  local current_buf = api.nvim_get_current_buf()
+  -- 遍历每个缓冲区，获取并打印它的类型
   for _,i in ipairs(bufs) do
     if i~=current_buf then
       -- 检查缓冲区的 filetype
-      local buf_ft = vim.api.nvim_buf_get_option(i, 'filetype')
+      local buf_ft = api.nvim_buf_get_option(i, 'filetype')
+      local buf_bt = api.nvim_buf_get_option(i, 'buftype')
       -- 如果缓冲区的 filetype 不是 'NvimTree'，则删除它
-      if buf_ft ~= 'NvimTree' then
-        vim.api.nvim_buf_delete(i, {})  -- 删除非当前缓冲区且不为 NvimTree 的缓冲区
+      -- dap-ui 有一个特殊的 buftype 为 'prompt'，不应该删除
+      if buf_ft ~= 'NvimTree' and buf_bt ~= 'prompt' then
+        api.nvim_buf_delete(i, {})
       end
     end
   end
