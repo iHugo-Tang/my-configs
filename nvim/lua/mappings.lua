@@ -55,11 +55,12 @@ map("n", "<leader>bo", function()
         ['prompt'] = true,
         ['quickfix'] = true,
         ['help'] = true,
+        ['dap-repl'] = true,
         ['terminal'] = true
       }
       
       -- 如果不是受保护的缓冲区类型，则关闭它
-      if not protected[buf_ft] and not protected[buf_bt] then
+      if not protected[buf_ft] and not string.match(buf_ft, "^dapui_") then
         pcall(api.nvim_buf_delete, buf, {})
       end
     end
