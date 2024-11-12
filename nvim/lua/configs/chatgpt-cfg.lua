@@ -2,7 +2,7 @@ local M = {}
 
 M.options = {
   openai_params = {
-    model = "gpt-4o-mini",
+    model = "grok-beta",
     frequency_penalty = 0,
     presence_penalty = 0,
     max_tokens = 300,
@@ -11,7 +11,7 @@ M.options = {
     n = 1,
   },
   openai_edit_params = {
-    model = "gpt-4o-mini",
+    model = "grok-beta",
     frequency_penalty = 0,
     presence_penalty = 0,
     temperature = 0,

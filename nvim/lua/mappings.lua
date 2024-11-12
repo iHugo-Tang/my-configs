@@ -42,16 +42,25 @@ unmap("n", "<leader>b")
 map("n", "<leader>bo", function()
   local bufs = api.nvim_list_bufs()
   local current_buf = api.nvim_get_current_buf()
-  -- 遍历每个缓冲区，获取并打印它的类型
-  for _,i in ipairs(bufs) do
-    if i~=current_buf then
-      -- 检查缓冲区的 filetype
-      local buf_ft = api.nvim_buf_get_option(i, 'filetype')
-      local buf_bt = api.nvim_buf_get_option(i, 'buftype')
-      -- 如果缓冲区的 filetype 不是 'NvimTree'，则删除它
-      -- dap-ui 有一个特殊的 buftype 为 'prompt'，不应该删除
-      if buf_ft ~= 'NvimTree' and buf_bt ~= 'prompt' then
-        api.nvim_buf_delete(i, {})
+  
+  for _, buf in ipairs(bufs) do
+    if buf ~= current_buf then
+      -- 检查缓冲区的 filetype 和 buftype
+      local buf_ft = api.nvim_buf_get_option(buf, 'filetype')
+      local buf_bt = api.nvim_buf_get_option(buf, 'buftype')
+      
+      -- 保护特殊的缓冲区类型
+      local protected = {
+        ['NvimTree'] = true,
+        ['prompt'] = true,
+        ['quickfix'] = true,
+        ['help'] = true,
+        ['terminal'] = true
+      }
+      
+      -- 如果不是受保护的缓冲区类型，则关闭它
+      if not protected[buf_ft] and not protected[buf_bt] then
+        pcall(api.nvim_buf_delete, buf, {})
       end
     end
   end

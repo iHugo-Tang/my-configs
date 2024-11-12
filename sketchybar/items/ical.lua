@@ -4,7 +4,7 @@ local app_icons = require("helpers.app_icons")
 
 -- 定义解析函数
 local function getEvents()
-  local handle = io.popen('icalBuddy -ps "| @@@ | -- |" eventsToday')
+  local handle = io.popen('icalBuddy -n -ps "| @@@ | -- |" eventsToday')
   if (handle == nil) then
     return
   end
